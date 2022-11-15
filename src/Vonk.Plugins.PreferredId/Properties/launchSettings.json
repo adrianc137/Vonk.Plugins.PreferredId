@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Vonk.Plugins.PreferredId": {
+      "commandName": "Project",
+      "commandLineArgs": "E:\\Career\\Firely\\Server\\firely.server.dll",
+      "workingDirectory": "E:\\Career\\Firely\\Server\\"
+    },
+    "Firely.Server": {
+      "commandName": "Executable",
+      "executablePath": "dotnet.exe",
+      "commandLineArgs": "E:\\Career\\Firely\\Server\\firely.server.dll",
+      "workingDirectory": "E:\\Career\\Firely\\Server\\"
+    }
+  }
+}

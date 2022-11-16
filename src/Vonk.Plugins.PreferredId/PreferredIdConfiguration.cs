@@ -6,7 +6,7 @@ using Vonk.Core.Pluggability;
 
 namespace Vonk.Plugins.PreferredId
 {
-    [VonkConfiguration(order: 4899)]
+    [VonkConfiguration(order: 4901)]
     public static class PreferredIdConfiguration
     {
         public static IServiceCollection ConfigureServices(this IServiceCollection services)
@@ -20,14 +20,14 @@ namespace Vonk.Plugins.PreferredId
             // GET
             builder
                 .OnCustomInteraction(VonkInteraction.instance_custom, "preferred-id")
-                .AndResourceTypes(new[] { "NamingSystem" })
+                .AndResourceTypes("NamingSystem")
                 .AndMethod("GET")
                 .HandleAsyncWith<PreferredIdService>((svc, ctx) => svc.PreferredIdGET(ctx));
 
             // POST
             builder
                 .OnCustomInteraction(VonkInteraction.type_custom, "preferred-id")
-                .AndResourceTypes(new[] { "NamingSystem" })
+                .AndResourceTypes("NamingSystem")
                 .AndMethod("POST")
                 .HandleAsyncWith<PreferredIdService>((svc, ctx) => svc.PreferredIdPOST(ctx));
 

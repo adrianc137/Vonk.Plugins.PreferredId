@@ -19,15 +19,15 @@ namespace Vonk.Plugins.PreferredId
         {
             // GET
             builder
-                .OnCustomInteraction(VonkInteraction.instance_custom, "preferred-id")
-                .AndResourceTypes("NamingSystem")
+                .OnCustomInteraction(VonkInteraction.instance_custom, Constants.PreferredId)
+                .AndResourceTypes(Constants.NamingSystem)
                 .AndMethod("GET")
                 .HandleAsyncWith<PreferredIdService>((svc, ctx) => svc.PreferredIdGET(ctx));
 
             // POST
             builder
-                .OnCustomInteraction(VonkInteraction.type_custom, "preferred-id")
-                .AndResourceTypes("NamingSystem")
+                .OnCustomInteraction(VonkInteraction.type_custom, Constants.PreferredId)
+                .AndResourceTypes(Constants.NamingSystem)
                 .AndMethod("POST")
                 .HandleAsyncWith<PreferredIdService>((svc, ctx) => svc.PreferredIdPOST(ctx));
 

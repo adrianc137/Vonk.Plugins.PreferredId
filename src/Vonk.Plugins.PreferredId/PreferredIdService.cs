@@ -101,6 +101,7 @@ namespace Vonk.Plugins.PreferredId
 
         private bool ValidIncomingRequest(IVonkContext vonkContext, string id, string type)
         {
+            
             // validate id and type
             if (string.IsNullOrWhiteSpace(id))
             {
@@ -123,13 +124,27 @@ namespace Vonk.Plugins.PreferredId
         {
             var args = new ArgumentCollection(
                 new Argument(ArgumentSource.Internal, ArgumentNames.resourceType, Constants.NamingSystem),
-                new Argument(ArgumentSource.Internal, "id", id),
-                new Argument(ArgumentSource.Internal, "type", type));
+                new Argument(ArgumentSource.Internal, "_id", id),
+                new Argument(ArgumentSource.Internal, "_type", type));
 
             // Tried both Latest and History, same outcome - 0 results
             var options = SearchOptions.History(vonkContext.ServerBase, vonkContext.Request.Interaction, vonkContext.InformationModel);
 
             return await _searchRepository.Search(args, options);
+        }
+
+        private bool IsIdValid(string id)
+        {
+            /*
+             * The server parses the provided id to see what type it is (mary a URI, an OID as a URI, a plain OID, or a v2 table 0396 code).
+             * If the server can't tell what type of identifier it is, it can try it as multiple types.
+             * It is an error if more than one system matches the provided identifier
+             */
+
+            // AA: Don;t know what "mary a URI" means;
+            // regardless, I would have to spend time going through the specs and creating regex for each of these types
+            // The type provided for the id would be used to validate against the correct format
+            throw new NotImplementedException();
         }
     }
 }
